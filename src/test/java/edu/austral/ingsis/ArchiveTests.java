@@ -8,7 +8,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FileSystemTests {
+public class ArchiveTests {
 
   private final FileSystemRunner runner = commands -> List.of();
 
