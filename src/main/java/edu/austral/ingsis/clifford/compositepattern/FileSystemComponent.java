@@ -2,7 +2,7 @@ package edu.austral.ingsis.clifford.compositepattern;
 
 import java.util.List;
 
-public interface Archive {
+public interface FileSystemComponent {
     String getName();
-    List<Archive> getChildren();
+    List<FileSystemComponent> getChildren();
 }

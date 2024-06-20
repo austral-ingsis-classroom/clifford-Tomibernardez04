@@ -1,20 +1,15 @@
 package edu.austral.ingsis.clifford.compositepattern;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Directory implements Archive {
+public class Directory implements FileSystemComponent {
 
     private final String name;
-    private final List<Archive> children;
-
-    public Directory(String name, List<Archive> children) {
-        this.name = name;
-        this.children = children;
-    }
+    private final List<FileSystemComponent> children = new ArrayList<>();
 
     public Directory(String name) {
         this.name = name;
-        this.children = List.of();
     }
 
     @Override
@@ -23,15 +18,15 @@ public class Directory implements Archive {
     }
 
     @Override
-    public List<Archive> getChildren() {
+    public List<FileSystemComponent> getChildren() {
         return children;
     }
 
-    public void add(Archive archive) {
+    public void addFileSystem(FileSystemComponent archive) {
         children.add(archive);
     }
 
-    public void remove(String name) {
-        children.removeIf(archive -> archive.getName().equals(name));
+    public void remove(FileSystemComponent archive) {
+        children.remove(archive);
     }
 }
