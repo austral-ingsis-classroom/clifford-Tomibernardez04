@@ -7,24 +7,23 @@ import java.util.Objects;
 
 public class FileSystem {
 
-    private final CommandFactory commandFactory = new CommandFactory();
-    private final Directory root;
-    private Directory currentDirectory;
+  private final CommandFactory commandFactory = new CommandFactory();
+  private final Directory root;
+  private Directory currentDirectory;
 
-    public FileSystem() {
-        root = new Directory("/");
-        currentDirectory = root;
-    }
+  public FileSystem() {
+    root = new Directory("/");
+    currentDirectory = root;
+  }
 
-    public Result execute(String command) {
-        if (Objects.equals(command, "")) {
-            return new Result("No command to execute", currentDirectory);
-        }
-        else {
-            Command cmd = commandFactory.getCommand(command, root, currentDirectory);
-            Result result = cmd.execute();
-            currentDirectory = result.directory();
-            return result;
-        }
+  public Result execute(String command) {
+    if (Objects.equals(command, "")) {
+      return new Result("No command to execute", currentDirectory);
+    } else {
+      Command cmd = commandFactory.getCommand(command, root, currentDirectory);
+      Result result = cmd.execute();
+      currentDirectory = result.directory();
+      return result;
     }
+  }
 }
